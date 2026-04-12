@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portafolio — JL Diseño &amp; Construcción | Proyectos en Mérida, Yucatán</title>
+  <meta name="description" content="Portafolio de proyectos de JL Diseño &amp; Construcción: casas construidas, remodelaciones y diseños arquitectónicos en Mérida, Yucatán. Calidad demostrada en cada obra." />
+  <link rel="canonical" href="portafolio.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Portafolio — JL Diseño &amp; Construcción" />
+  <meta property="og:description" content="Conoce los proyectos de construcción, remodelación y diseño arquitectónico que hemos realizado en Mérida, Yucatán." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" role="navigation" aria-label="Menú principal">
+    <div class="container">
+      <a href="index.html" class="navbar-brand" aria-label="JL Diseño y Construcción — Inicio">
+        <img src="img/logo.png" alt="Logo JL Diseño y Construcción" class="navbar-logo-img" />
+        <span class="logo-fallback navbar-logo-text" style="display:flex;flex-direction:column;">
+          JL Diseño &amp; Construcción
+          <span>Mérida, Yucatán</span>
+        </span>
+      </a>
+      <ul class="navbar-menu" role="list">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="portafolio.html" class="active" aria-current="page">Portafolio</a></li>
+        <li><a href="contacto.html" class="navbar-cta">Cotizar</a></li>
+      </ul>
+      <button class="navbar-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile overlay -->
+  <div class="navbar-overlay" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menú de navegación">
+    <button class="close-overlay" aria-label="Cerrar menú">✕</button>
+    <a href="index.html">Inicio</a>
+    <a href="nosotros.html">Nosotros</a>
+    <a href="servicios.html">Servicios</a>
+    <a href="portafolio.html" class="active">Portafolio</a>
+    <a href="contacto.html">Contacto</a>
+  </div>
+
+  <main>
+
+    <!-- ===== PAGE HEADER ===== -->
+    <header class="page-header" aria-label="Encabezado de página">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Ruta de navegación">
+          <a href="index.html">Inicio</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">Portafolio</span>
+        </nav>
+        <h1>Nuestro Portafolio</h1>
+      </div>
+    </header>
+
+    <!-- ===== PORTFOLIO SECTION ===== -->
+    <section class="portfolio-section section-padding" aria-label="Proyectos realizados">
+      <div class="container">
+
+        <div class="section-header text-center fade-in">
+          <span class="section-label">Nuestro trabajo</span>
+          <h2 class="section-title">Proyectos que hablan por sí mismos</h2>
+          <p class="section-subtitle">Cada proyecto es el resultado de meses de dedicación, planificación cuidadosa y trabajo en equipo. Aquí te presentamos una muestra de nuestras obras más representativas en Mérida y Yucatán.</p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="portfolio-filter fade-in" role="group" aria-label="Filtrar proyectos por categoría">
+          <button class="filter-btn active" data-filter="all" aria-pressed="true">Todos</button>
+          <button class="filter-btn" data-filter="construccion" aria-pressed="false">Construcción</button>
+          <button class="filter-btn" data-filter="remodelacion" aria-pressed="false">Remodelación</button>
+          <button class="filter-btn" data-filter="diseno" aria-pressed="false">Diseño</button>
+        </div>
+
+        <!-- Portfolio Grid -->
+        <div class="portfolio-grid" aria-label="Galería de proyectos">
+
+          <!-- Project 1 -->
+          <article class="portfolio-card fade-in fade-in-delay-1" data-category="construccion">
+            <div class="portfolio-card-image">
+              <img
+                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80"
+                alt="Residencia Los Álamos — casa moderna de dos pisos en fraccionamiento de Mérida"
+                loading="lazy"
+              />
+              <div class="portfolio-card-image-overlay" aria-hidden="true">
+                <p>Residencia de dos plantas con alberca, jardín y sala exterior. Superficie: 280 m².</p>
+              </div>
+            </div>
+            <div class="portfolio-card-body">
+              <h4>Residencia Los Álamos</h4>
+              <span class="category-tag">Construcción</span>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="portfolio-card fade-in fade-in-delay-2" data-category="remodelacion">
+            <div class="portfolio-card-image">
+              <img
+                src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"
+                alt="Remodelación integral de cocina y comedor en residencia privada de Mérida"
+                loading="lazy"
+              />
+              <div class="portfolio-card-image-overlay" aria-hidden="true">
+                <p>Remodelación completa de cocina abierta con isla central, quartz y herrajes italianos.</p>
+              </div>
+            </div>
+            <div class="portfolio-card-body">
+              <h4>Remodelación Cocina Integral</h4>
+              <span class="category-tag">Remodelación</span>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="portfolio-card fade-in fade-in-delay-3" data-category="diseno">
+            <div class="portfolio-card-image">
+              <img
+                src="https://images.unsplash.com/photo-1613490493576-4d884d74df65?w=800&q=80"
+                alt="Diseño arquitectónico Casa Montebello — render y proyecto ejecutivo en Mérida"
+                loading="lazy"
+              />
+              <div class="portfolio-card-image-overlay" aria-hidden="true">
+                <p>Proyecto ejecutivo completo con renders 3D fotorrealistas. Estilo contemporáneo tropical.</p>
+              </div>
+            </div>
+            <div class="portfolio-card-body">
+              <h4>Casa Montebello — Proyecto Ejecutivo</h4>
+              <span class="category-tag">Diseño</span>
+            </div>
+          </article>
+
+          <!-- Project 4 -->
+          <article class="portfolio-card fade-in fade-in-delay-1" data-category="construccion">
+            <div class="portfolio-card-image">
+              <img
+                src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80"
+                alt="Residencia Hacienda Santa Cruz — casa con alberca y jardín tropical en Mérida"
+                loading="lazy"
+              />
+              <div class="portfolio-card-image-overlay" aria-hidden="true">
+                <p>Casa de un nivel con piscina desbordante, palapa y jardín de 500 m² en zona norte.</p>
+              </div>
+            </div>
+            <div class="portfolio-card-body">
+              <h4>Residencia Hacienda Santa Cruz</h4>
+              <span class="category-tag">Construcción</span>
+            </div>
+          </article>
+
+          <!-- Project 5 -->
+          <article class="portfolio-card fade-in fade-in-delay-2" data-category="remodelacion">
+            <div class="portfolio-card-image">
+              <img
+                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80"
+                alt="Remodelación de baño principal con mármol travertino y regadera italiana"
+                loading="lazy"
+              />
+              <div class="portfolio-card-image-overlay" aria-hidden="true">
+                <p>Renovación de baño principal con mármol travertino, tina independiente y regadera de lluvia.</p>
+              </div>
+            </div>
+            <div class="portfolio-card-body">
+              <h4>Baño de Lujo — Col. Campestre</h4>
+              <span class="category-tag">Remodelación</span>
+            </div>
+          </article>
+
+          <!-- Project 6 -->
+          <article class="portfolio-card fade-in fade-in-delay-3" data-category="diseno">
+            <div class="portfolio-card-image">
+              <img
+                src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80"
+                alt="Villa Xcanatún — diseño y construcción de casa contemporánea en Yucatán"
+                loading="lazy"
+              />
+              <div class="portfolio-card-image-overlay" aria-hidden="true">
+                <p>Diseño y construcción de villa de estilo contemporáneo con materiales regionales de Yucatán.</p>
+              </div>
+            </div>
+            <div class="portfolio-card-body">
+              <h4>Villa Xcanatún</h4>
+              <span class="category-tag">Diseño</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA BANNER ===== -->
+    <section class="cta-banner" aria-label="Llamada a la acción">
+      <div class="container">
+        <div class="fade-in">
+          <h2>¿Te gustó lo que viste?</h2>
+          <p>Podemos crear algo igual de especial para ti. Contáctanos y hagamos realidad tu proyecto.</p>
+          <a href="contacto.html" class="btn btn-white">Inicia tu proyecto</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" aria-label="Pie de página">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">JL <span>Diseño &amp; Construcción</span></div>
+          <p>Empresa constructora con más de 15 años de experiencia en Mérida, Yucatán. Construimos con calidad, compromiso y visión para hacer realidad el hogar que siempre soñaste.</p>
+          <div class="footer-social" aria-label="Redes sociales">
+            <a href="#" aria-label="Facebook" rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="#" aria-label="Instagram" rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://wa.me/529991234567" aria-label="WhatsApp" rel="noopener" target="_blank">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+            </a>
+          </div>
+        </div>
+        <nav class="footer-nav" aria-label="Enlaces rápidos">
+          <h4>Navegación</h4>
+          <ul role="list">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="portafolio.html">Portafolio</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </nav>
+        <div class="footer-contact" aria-label="Datos de contacto">
+          <h4>Contacto</h4>
+          <div class="footer-contact-item">
+            <span class="icon" aria-hidden="true">📞</span>
+            <span><a href="tel:+529991234567">+52 999 123 4567</a></span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="icon" aria-hidden="true">✉️</span>
+            <span><a href="mailto:contacto@jlconstruccion.com">contacto@jlconstruccion.com</a></span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="icon" aria-hidden="true">📍</span>
+            <span>Calle 20 #123, Col. García Ginerés,<br>Mérida, Yucatán, México</span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="icon" aria-hidden="true">🕐</span>
+            <span>Lun–Vie: 9:00 AM – 6:00 PM</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2026 JL Diseño &amp; Construcción. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== WHATSAPP FLOATING BUTTON ===== -->
+  <a href="https://wa.me/529991234567" class="whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Contáctanos por WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+    </svg>
+  </a>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
