@@ -266,3 +266,103 @@
     });
   });
 })();
+
+/* ===== ANIMATED COUNTERS ===== */
+(function initCounters() {
+  const counters = document.querySelectorAll('.stat-number');
+  if (!counters.length) return;
+
+  function animateCounter(el) {
+    const raw = el.textContent.trim();
+    // Extract number and suffix (+ or %)
+    const suffix = raw.replace(/[0-9]/g, '');
+    const target = parseInt(raw.replace(/\D/g, ''), 10);
+    if (isNaN(target)) return;
+
+    const duration = 2000;
+    const startTime = performance.now();
+
+    function update(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // Ease out cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(eased * target);
+      el.textContent = current + suffix;
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      }
+    }
+    requestAnimationFrame(update);
+  }
+
+  if (!('IntersectionObserver' in window)) {
+    counters.forEach(animateCounter);
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  counters.forEach(function (el) {
+    observer.observe(el);
+  });
+})();
+
+/* ===== BEFORE / AFTER SLIDER ===== */
+(function initBeforeAfterSliders() {
+  const sliders = document.querySelectorAll('.ba-slider');
+  if (!sliders.length) return;
+
+  sliders.forEach(function (slider) {
+    const after = slider.querySelector('.ba-after');
+    const handle = slider.querySelector('.ba-handle');
+    let isDragging = false;
+
+    function setPosition(x) {
+      const rect = slider.getBoundingClientRect();
+      let pct = ((x - rect.left) / rect.width) * 100;
+      pct = Math.max(2, Math.min(98, pct));
+      after.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+      handle.style.left = pct + '%';
+    }
+
+    // Mouse events
+    slider.addEventListener('mousedown', function (e) {
+      isDragging = true;
+      setPosition(e.clientX);
+      e.preventDefault();
+    });
+
+    document.addEventListener('mousemove', function (e) {
+      if (isDragging) setPosition(e.clientX);
+    });
+
+    document.addEventListener('mouseup', function () {
+      isDragging = false;
+    });
+
+    // Touch events
+    slider.addEventListener('touchstart', function (e) {
+      isDragging = true;
+      setPosition(e.touches[0].clientX);
+    }, { passive: true });
+
+    document.addEventListener('touchmove', function (e) {
+      if (isDragging) setPosition(e.touches[0].clientX);
+    }, { passive: true });
+
+    document.addEventListener('touchend', function () {
+      isDragging = false;
+    });
+  });
+})();
