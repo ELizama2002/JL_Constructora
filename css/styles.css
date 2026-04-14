@@ -226,7 +226,8 @@ p:last-child {
   background-color: var(--accent);
   color: var(--white);
   border-color: var(--accent);
-  transform: translateY(-2px);
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 25px rgba(212, 132, 26, 0.35);
 }
 
 .btn-outline-white {
@@ -767,7 +768,7 @@ body {
 .hero-bg {
   position: absolute;
   inset: 0;
-  background-image: url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1920&q=80');
+  background-image: url('../img/modelo-mediterraneo-01.jpeg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -1207,22 +1208,27 @@ body {
 }
 
 .filter-btn {
-  padding: 0.5rem 1.25rem;
+  padding: 10px 24px;
+  border: 2px solid var(--primary);
   border-radius: 50px;
+  background: transparent;
+  color: var(--primary);
+  font-family: var(--font-body);
+  font-weight: 600;
   font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--gray-medium);
-  background-color: var(--off-white);
-  border: 1px solid var(--gray-light);
-  transition: var(--transition);
   cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.filter-btn:hover,
-.filter-btn.active {
-  background-color: var(--primary);
+.filter-btn.active,
+.filter-btn:hover {
+  background: var(--primary);
   color: var(--white);
   border-color: var(--primary);
+  box-shadow: 0 4px 15px rgba(27, 58, 92, 0.3);
+  transform: translateY(-2px);
 }
 
 .portfolio-grid {
@@ -1240,8 +1246,8 @@ body {
 }
 
 .portfolio-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
 .portfolio-card-image {
@@ -1264,7 +1270,7 @@ body {
 .portfolio-card-image-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(15, 36, 64, 0.7);
+  background: linear-gradient(to top, rgba(15, 36, 64, 0.88) 0%, rgba(15, 36, 64, 0.3) 50%, transparent 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1322,7 +1328,16 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle at 30% 50%, rgba(212, 132, 26, 0.1) 0%, transparent 60%);
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(212, 132, 26, 0.12) 0%, transparent 55%),
+    radial-gradient(circle at 80% 30%, rgba(255, 255, 255, 0.04) 0%, transparent 40%),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 30px,
+      rgba(255,255,255,0.015) 30px,
+      rgba(255,255,255,0.015) 31px
+    );
 }
 
 .cta-banner .container {
@@ -2064,7 +2079,7 @@ body {
   font-size: 0.75rem;
   font-weight: 700;
   color: var(--white);
-  background-color: var(--primary);
+  background-color: var(--accent);
   width: 28px;
   height: 28px;
   border-radius: 50%;
@@ -2125,18 +2140,35 @@ body {
 }
 
 .testimonial-card {
-  background: var(--off-white);
+  background: var(--white);
   border-radius: var(--radius-md);
-  padding: 2rem;
+  padding: 2rem 2rem 2rem 2.25rem;
   border: 1px solid var(--gray-light);
+  border-left: 3px solid var(--accent);
   transition: var(--transition);
   position: relative;
+  overflow: hidden;
+}
+
+.testimonial-card::before {
+  content: '\201C';
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  font-size: 8rem;
+  font-family: var(--font-heading);
+  color: var(--accent);
+  opacity: 0.07;
+  line-height: 1;
+  pointer-events: none;
 }
 
 .testimonial-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
   box-shadow: var(--shadow-md);
-  border-color: var(--accent);
+  border-left-color: var(--primary);
+  border-color: var(--gray-light);
+  border-left-color: var(--accent);
 }
 
 .testimonial-quote {
@@ -2362,21 +2394,50 @@ body {
   border-radius: var(--radius-md);
   padding: 1.5rem 1.25rem;
   border: 1px solid var(--gray-light);
+  border-top: 3px solid var(--accent);
   box-shadow: var(--shadow-sm);
   transition: var(--transition);
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-compact-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 0; height: 3px;
+  background-color: var(--primary);
+  transition: width 0.4s ease;
+}
+
+.service-compact-card:hover::after {
+  width: 100%;
 }
 
 .service-compact-card:hover {
   border-color: var(--accent);
   box-shadow: var(--shadow-md);
-  transform: translateY(-3px);
+  transform: translateY(-6px);
+  background: var(--off-white);
 }
 
 .service-compact-icon {
-  font-size: 2rem;
-  display: block;
-  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background: rgba(212, 132, 26, 0.1);
+  border-radius: 50%;
+  margin: 0 auto 0.85rem;
+  color: var(--accent);
+  transition: var(--transition);
+}
+
+.service-compact-card:hover .service-compact-icon {
+  background: var(--accent);
+  color: var(--white);
 }
 
 .service-compact-card h3 {
@@ -2557,4 +2618,74 @@ body {
   .services-grid-compact {
     grid-template-columns: 1fr 1fr;
   }
+}
+
+/* ============================================================
+   PAGE LOAD ANIMATIONS
+   ============================================================ */
+
+/* Navbar slides in from top */
+@keyframes navSlideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+.navbar {
+  animation: navSlideDown 0.45s ease forwards;
+}
+
+/* Hero / page-header fades in */
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-content {
+  animation: heroFadeIn 0.7s 0.2s ease both;
+}
+.page-header h1 {
+  animation: heroFadeIn 0.6s 0.15s ease both;
+}
+
+/* ============================================================
+   PROCESS STEP STAGGER (handled by JS fade-in, but CSS adds delay)
+   ============================================================ */
+.process-step.fade-in-delay-1 { animation-delay: 0.05s; }
+.process-step.fade-in-delay-2 { animation-delay: 0.2s; }
+.process-step.fade-in-delay-3 { animation-delay: 0.35s; }
+.process-step.fade-in-delay-4 { animation-delay: 0.5s; }
+
+/* Process step icon bounce on hover */
+.process-step:hover .process-icon {
+  animation: iconBounce 0.5s ease;
+}
+@keyframes iconBounce {
+  0%, 100% { transform: translateY(0); }
+  40%       { transform: translateY(-8px); }
+  70%       { transform: translateY(-3px); }
+}
+
+/* ============================================================
+   MOBILE TESTIMONIALS — horizontal scroll carousel
+   ============================================================ */
+@media (max-width: 768px) {
+  .testimonials-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    scroll-padding: 0 1rem;
+  }
+  .testimonials-grid::-webkit-scrollbar { display: none; }
+  .testimonial-card {
+    flex: 0 0 85%;
+    scroll-snap-align: start;
+  }
+}
+
+/* ============================================================
+   BEFORE/AFTER TODO COMMENT LABEL
+   ============================================================ */
+.ba-todo-notice {
+  display: none; /* only visible in source as comment */
 }
