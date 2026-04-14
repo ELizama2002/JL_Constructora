@@ -439,7 +439,7 @@
     currentIndex = 0;
     titleEl.textContent = g.title;
     renderMedia(currentIndex);
-    lightbox.removeAttribute('hidden');
+    lightbox.classList.add('lb-open');
     requestAnimationFrame(function(){ lightbox.classList.add('lb-active'); });
     document.body.style.overflow = 'hidden';
   }
@@ -449,7 +449,7 @@
     document.body.style.overflow = '';
     var v = mediaWrapper.querySelector('video');
     if (v) v.pause();
-    setTimeout(function(){ lightbox.setAttribute('hidden', ''); }, 300);
+    setTimeout(function(){ lightbox.classList.remove('lb-open'); }, 300);
   }
 
   function renderMedia(index) {
@@ -503,7 +503,7 @@
 
   // Keyboard
   document.addEventListener('keydown', function(e) {
-    if (lightbox.hasAttribute('hidden')) return;
+    if (!lightbox.classList.contains('lb-open')) return;
     if (e.key === 'Escape') closeLightbox();
     if (e.key === 'ArrowRight') goNext();
     if (e.key === 'ArrowLeft') goPrev();

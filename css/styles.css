@@ -2410,26 +2410,22 @@ body {
    LIGHTBOX
    ============================================================ */
 .lightbox {
+  display: none;
   position: fixed;
   inset: 0;
   z-index: 2000;
   background-color: rgba(0, 0, 0, 0.95);
-  display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-.lightbox:not([hidden]) {
+.lightbox.lb-open {
   display: flex;
 }
 
-.lightbox[hidden] {
-  display: none;
-}
-
-.lightbox.lb-active {
+.lightbox.lb-open.lb-active {
   opacity: 1;
 }
 
