@@ -366,3 +366,156 @@
     });
   });
 })();
+
+/* ===== LIGHTBOX — Gallery data & viewer ===== */
+(function initLightbox() {
+  var lightbox = document.getElementById('lightbox');
+  if (!lightbox) return;
+
+  // ---- Gallery definitions ----
+  var galleries = {
+    'bacheo': {
+      title: 'Bacheo y Reparación de Calles',
+      media: [
+        {src:'img/bacheo-01.jpeg',type:'image',alt:'Bacheo de calles — imagen 1'},
+        {src:'img/bacheo-02.jpeg',type:'image',alt:'Bacheo de calles — imagen 2'},
+        {src:'img/bacheo-03.jpeg',type:'image',alt:'Bacheo de calles — imagen 3'},
+        {src:'img/bacheo-04.jpeg',type:'image',alt:'Bacheo de calles — imagen 4'},
+        {src:'img/bacheo-05.jpeg',type:'image',alt:'Bacheo de calles — imagen 5'},
+        {src:'img/bacheo-06.jpeg',type:'image',alt:'Bacheo de calles — imagen 6'},
+        {src:'img/bacheo-07.jpeg',type:'image',alt:'Bacheo de calles — imagen 7'},
+        {src:'img/bacheo-08.jpeg',type:'image',alt:'Bacheo de calles — imagen 8'},
+        {src:'img/bacheo-09.jpeg',type:'image',alt:'Bacheo de calles — imagen 9'}
+      ]
+    },
+    'casa2niveles': {
+      title: 'Casa Habitación de 2 Niveles',
+      media: (function(){var a=[];for(var i=1;i<=18;i++){a.push({src:'img/casa2niveles-'+String(i).padStart(2,'0')+'.jpeg',type:'image',alt:'Casa 2 niveles — foto '+i});}return a;})()
+    },
+    'impermeabilizacion': {
+      title: 'Impermeabilización Profesional',
+      media: (function(){var a=[];for(var i=1;i<=7;i++){a.push({src:'img/impermeabilizacion-'+String(i).padStart(2,'0')+'.jpeg',type:'image',alt:'Impermeabilización — foto '+i});}return a;})()
+    },
+    'mantenimiento': {
+      title: 'Mantenimiento de Instalaciones Industriales',
+      media: (function(){var a=[];for(var i=1;i<=21;i++){a.push({src:'img/mantenimiento-'+String(i).padStart(2,'0')+'.jpeg',type:'image',alt:'Mantenimiento industrial — foto '+i});}return a;})()
+    },
+    'modelo-brasil': {
+      title: 'Modelo Brasil — Casa Residencial',
+      media: (function(){
+        var a=[];
+        for(var i=1;i<=23;i++){a.push({src:'img/modelo-brasil-'+String(i).padStart(2,'0')+'.jpeg',type:'image',alt:'Modelo Brasil — foto '+i});}
+        a.push({src:'img/modelo-brasil-video.mp4',type:'video',alt:'Modelo Brasil — video recorrido'});
+        return a;
+      })()
+    },
+    'modelo-hacienda': {
+      title: 'Modelo Hacienda — Casa Residencial',
+      media: (function(){var a=[];for(var i=1;i<=17;i++){a.push({src:'img/modelo-hacienda-'+String(i).padStart(2,'0')+'.jpeg',type:'image',alt:'Modelo Hacienda — foto '+i});}return a;})()
+    },
+    'modelo-mediterraneo': {
+      title: 'Modelo Mediterráneo — Casa Residencial',
+      media: (function(){var a=[];for(var i=1;i<=20;i++){a.push({src:'img/modelo-mediterraneo-'+String(i).padStart(2,'0')+'.jpeg',type:'image',alt:'Modelo Mediterráneo — foto '+i});}return a;})()
+    },
+    'piscina-sanignacio': {
+      title: 'Piscina Residencial — San Ignacio',
+      media: (function(){var a=[];for(var i=1;i<=10;i++){a.push({src:'img/piscina-sanignacio-'+String(i).padStart(2,'0')+'.jpeg',type:'image',alt:'Piscina San Ignacio — foto '+i});}return a;})()
+    }
+  };
+
+  var currentMedia = [];
+  var currentIndex = 0;
+  var mediaWrapper = lightbox.querySelector('.lightbox-media-wrapper');
+  var titleEl = lightbox.querySelector('.lightbox-title');
+  var counterEl = lightbox.querySelector('.lightbox-counter');
+  var closeBtn = lightbox.querySelector('.lightbox-close');
+  var prevBtn = lightbox.querySelector('.lightbox-prev');
+  var nextBtn = lightbox.querySelector('.lightbox-next');
+
+  function openLightbox(galleryId) {
+    var g = galleries[galleryId];
+    if (!g) return;
+    currentMedia = g.media;
+    currentIndex = 0;
+    titleEl.textContent = g.title;
+    renderMedia(currentIndex);
+    lightbox.removeAttribute('hidden');
+    requestAnimationFrame(function(){ lightbox.classList.add('lb-active'); });
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('lb-active');
+    document.body.style.overflow = '';
+    var v = mediaWrapper.querySelector('video');
+    if (v) v.pause();
+    setTimeout(function(){ lightbox.setAttribute('hidden', ''); }, 300);
+  }
+
+  function renderMedia(index) {
+    var item = currentMedia[index];
+    counterEl.textContent = (index + 1) + ' / ' + currentMedia.length;
+    var v = mediaWrapper.querySelector('video');
+    if (v) v.pause();
+    mediaWrapper.innerHTML = '';
+
+    if (item.type === 'video') {
+      var video = document.createElement('video');
+      video.src = item.src;
+      video.controls = true;
+      video.autoplay = true;
+      video.setAttribute('playsinline', '');
+      mediaWrapper.appendChild(video);
+    } else {
+      var img = document.createElement('img');
+      img.src = item.src;
+      img.alt = item.alt || '';
+      mediaWrapper.appendChild(img);
+    }
+  }
+
+  function goNext() {
+    currentIndex = (currentIndex + 1) % currentMedia.length;
+    renderMedia(currentIndex);
+  }
+
+  function goPrev() {
+    currentIndex = (currentIndex - 1 + currentMedia.length) % currentMedia.length;
+    renderMedia(currentIndex);
+  }
+
+  // Open on card click
+  document.querySelectorAll('.portfolio-card[data-gallery-id]').forEach(function(card) {
+    card.addEventListener('click', function() {
+      openLightbox(card.getAttribute('data-gallery-id'));
+    });
+  });
+
+  // Controls
+  closeBtn.addEventListener('click', closeLightbox);
+  prevBtn.addEventListener('click', goPrev);
+  nextBtn.addEventListener('click', goNext);
+
+  // Click outside to close
+  lightbox.addEventListener('click', function(e) {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  // Keyboard
+  document.addEventListener('keydown', function(e) {
+    if (lightbox.hasAttribute('hidden')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') goNext();
+    if (e.key === 'ArrowLeft') goPrev();
+  });
+
+  // Touch swipe
+  var touchStartX = 0;
+  lightbox.addEventListener('touchstart', function(e) {
+    touchStartX = e.touches[0].clientX;
+  }, { passive: true });
+  lightbox.addEventListener('touchend', function(e) {
+    var diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) { diff > 0 ? goNext() : goPrev(); }
+  });
+})();
